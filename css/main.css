@@ -1676,7 +1676,7 @@ body.lock {
   width: 33px;
   height: 33px;
   border-radius: 15%;
-  background: url("../../img/icons/cart/add-cart.svg") 50%/25px 25px no-repeat;
+  background: url("../img/icons/cart/add-cart.svg") 50%/25px 25px no-repeat;
 }
 .card__add-cart:hover {
   background-color: rgba(233, 198, 8, 0.12);
