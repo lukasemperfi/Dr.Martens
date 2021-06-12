@@ -1,0 +1,335 @@
+var cart = {}; // корзина
+$('document').ready(function() {
+    loadGoods();
+    loadCart();
+    loadIconCount();
+    init();
+});
+
+function loadGoods() {
+    //загружаю товары на страницу
+    $.getJSON('goods.json', function(data) {
+        var out = '';
+        for (var key in data) {
+            out += '<div class="card">';
+            out += `<a href="cards-product.html#${key}">`;
+            out += `<div class="card__image">`;
+            out += `<img class="card__picture" src="${data[key].image}" alt="">`;
+            out += `</div>`;
+            out += `</a>`;
+            out += `<div class="card__body">`;
+            out += `<a href="cards-product.html#${key}">`;
+            out += `<div class="card__title">${data[key].name}</div>`;
+            out += `</a>`;
+            out += `<div class="card__price">${data[key].cost} грн</div>`;
+            out += `<button type="button" class="card__add-cart" data-id="${key}"></button>`;
+            out += `</div>`;
+            out += '</div>';
+        }
+        $('.cards__row').html(out);
+        $('.card__add-cart').on('click', addToCart);
+    })
+}
+
+function addToCart() {
+    //добавляем товар в корзину
+    var id = $(this).attr('data-id');
+    if (cart[id] == undefined) {
+        cart[id] = 1; //если в корзине нет товара - делаем равным 1
+    } else {
+        cart[id]++; //если такой товар есть - увеличиваю на единицу
+    }
+    showMiniCart();
+    addIconCount();
+    showCart();
+    saveCart();
+}
+
+function showCart() {
+    //вывод корзины
+    if (!isEmpty(cart)) {
+        var out = '<div class="cart__product-title">Корзина пуста</div>';
+        var outM = '<div class="cart__product-title">Корзина пуста</div>';
+        $('.cart__body').html(out);
+        $('.cart__body-modal').html(out);
+
+    } else {
+        $.getJSON('goods.json', function(data) {
+            var goods = data;
+            var out = '';
+            var outM = '';
+            for (var id in cart) {
+                var price = cart[id] * goods[id].cost;
+                var sumPrice = price.toLocaleString();
+                // Вывожу разметку в корзину на странице
+                out += `<div class="cart__row">`;
+                out += `<div class="cart__col">`;
+                out += `<div class="cart__delete" data-id="${id}">`;
+                out += `<img src="img/icons/cart/trash.svg" alt="">`;
+                out += `</div>`;
+                out += `</div>`;
+                out += `<div class="cart__col">`;
+                out += `<div class="cart__image">`;
+                out += `<img src="${goods[id].image}">`;
+                out += `</div>`;
+                out += `</div>`;
+                out += `<div class="cart__col">`;
+                out += `<div class="cart__details">`;
+                out += `<div class="cart__product-title">${goods[id].name}</div>`;
+                out += `<p class="cart__product-color">Размер: 41</p>`;
+                out += `<p class="cart__product-size">Цвет: Black</p>`;
+                out += `</div>`;
+                out += `</div>`;
+                out += `<div class="cart__col">`;
+                out += `<div class="cart__quantity quantity">`;
+                out += `<button class="quantity__btn minus" data-id="${id}" type="button" name="quantity-button"></button>`;
+                out += `<input type="text" class="total input" name="name" value="${cart[id]}" data-price="${goods[id].cost}" autocomplete="chrome-off">`;
+                out += `<button class="quantity__btn plus" data-id="${id}" type="button" name="quantity-button"></button>`;
+                out += `</div>`;
+                out += `</div>`;
+                out += `<div class="cart__col">`;
+                out += `<div class="cart__price" >${sumPrice} грн</div>`;
+                out += `</div>`;
+                out += `</div>`;
+
+                // Вывожу разметку в корзину модального окна
+                outM += `<div class="cart__row-modal">`;
+                outM += `<div class="cart__col">`;
+                outM += `<div class="cart__delete" data-id="${id}">`;
+                outM += `<img src="img/icons/cart/trash.svg" alt="">`;
+                outM += `</div>`;
+                outM += `</div>`;
+                outM += `<div class="cart__col">`;
+                outM += `<div class="cart__image">`;
+                outM += `<img src="${goods[id].image}">`;
+                outM += `</div>`;
+                outM += `</div>`;
+                outM += `<div class="cart__col">`;
+                outM += `<div class="cart__details">`;
+                outM += `<div class="cart__product-title">${goods[id].name}</div>`;
+                outM += `<p class="cart__product-color">Размер: 41</p>`;
+                outM += `<p class="cart__product-size">Цвет: Black</p>`;
+                outM += `</div>`;
+                outM += `</div>`;
+                outM += `<div class="cart__col">`;
+                outM += `<div class="cart__quantity quantity">`;
+                outM += `<button class="quantity__btn minus" data-id="${id}" type="button" name="quantity-button"></button>`;
+                outM += `<input type="text" class="total inputM" name="name" value="${cart[id]}" data-price="${goods[id].cost}" autocomplete="chrome-off">`;
+                outM += `<button class="quantity__btn plus" data-id="${id}" type="button" name="quantity-button"></button>`;
+                outM += `</div>`;
+                outM += `</div>`;
+                outM += `<div class="cart__col">`;
+                outM += `<div class="cart__price" >${sumPrice} грн</div>`;
+                outM += `</div>`;
+                outM += `</div>`;
+
+            }
+            $('.cart__body').html(out);
+            $('.cart__body-modal').html(outM);
+            $('.plus').on('click', plusGoods);
+            $('.minus').on('click', minusGoods);
+            $('.cart__delete').on('click', delGoods);
+            init();
+
+            function plusGoods() {
+                var articul = $(this).attr('data-id');
+                cart[articul]++;
+                saveCart(); //сохраняю корзину в localStorage
+                plusIconCount();
+                showCart();
+                showMiniCart();
+            }
+
+            function minusGoods() {
+                var articul = $(this).attr('data-id');
+                if (cart[articul] > 1) {
+                    cart[articul]--;
+                } else {
+                    delete cart[articul];
+                }
+                saveCart(); //сохраняю корзину в localStorage
+                minusIconCount();
+                showCart();
+                showMiniCart();
+                init();
+            }
+
+            function delGoods() {
+                //удаляем товар из корзины
+                var articul = $(this).attr('data-id');
+                // удаляем колл из иконки
+                var countValue = localStorage.getItem('iconCount');
+                var minusCartValue = countValue - cart[articul];
+                localStorage.setItem('iconCount', minusCartValue);
+                var iconCount = document.querySelector('.header-cart__count');
+                iconCount.textContent = minusCartValue;
+                // удаляем колл из иконки
+                delete cart[articul];
+                saveCart(); //сохраняю корзину в localStorage
+                showCart();
+                showMiniCart();
+                init();
+            }
+
+        });
+    }
+}
+
+function saveCart() {
+    //сохраняю корзину в localStorage
+    localStorage.setItem('cart', JSON.stringify(cart)); //корзину в строку
+}
+
+function showMiniCart() {
+    //показываю мини корзину
+    if (!isEmpty(cart)) {
+        $('.header-cart__count').removeClass('show');
+    } else {
+        $('.header-cart__count').addClass('show');
+    }
+}
+
+function loadCart() {
+    //проверяю есть ли в localStorage запись cart
+    if (localStorage.getItem('cart')) {
+        // если есть - расширфровываю и записываю в переменную cart
+        cart = JSON.parse(localStorage.getItem('cart'));
+        showCart();
+        showMiniCart();
+    } else {
+        var out = '<div class="cart__product-title">Корзина пуста</div>';
+        var outM = '<div class="cart__product-title">Корзина пуста</div>';
+        $('.cart__body').html(out);
+        $('.cart__body-modal').html(out);
+    }
+}
+
+function isEmpty(object) {
+    //проверка корзины на пустоту
+    for (var key in object)
+        if (object.hasOwnProperty(key)) return true;
+    return false;
+}
+
+
+function addIconCount() {
+    //Добавляю счетчик на иконки корзины
+    let iconCount = document.querySelector('.header-cart__count');
+    let countValue;
+    iconCount.textContent++;
+    countValue = iconCount.textContent;
+    localStorage.setItem('iconCount', countValue);
+}
+
+
+function loadIconCount() {
+    //проверяю есть ли в localStorage запись iconCount(числа в счетчике)
+    if (localStorage.getItem('iconCount')) {
+        // если есть - расширфровываю и записываю в переменную cart
+        let iconCount = document.querySelector('.header-cart__count');
+        var countValue = localStorage.getItem('iconCount');
+        iconCount.textContent = countValue;
+        // $('.header-cart__count').text(countValue);
+    }
+}
+
+function plusIconCount() {
+    //Добавляю счетчик плюс на иконку корзины
+    let iconCount = document.querySelector('.header-cart__count');
+    let numberCount;
+    iconCount.textContent++;
+    numberCount = iconCount.textContent;
+    localStorage.setItem('iconCount', numberCount);
+}
+
+function minusIconCount() {
+    //Добавляю счетчик минус на иконку корзины
+    let iconCount = document.querySelector('.header-cart__count');
+    let numberCount;
+    iconCount.textContent--;
+    numberCount = iconCount.textContent;
+    localStorage.setItem('iconCount', numberCount);
+}
+
+const init = () => {
+    // Считаю итоговую сумму
+    let totalCost = 0;
+    // let totalCostSpace = totalCost.toLocaleString();
+    let totalCostModal = 0;
+
+    // + ' грн';
+    document.getElementById('total-price').textContent = totalCost;
+    document.getElementById('total-price-modal').textContent = totalCostModal;
+
+    // Итоговая сумма для корзины основной
+    [...document.querySelectorAll('.cart__row')].forEach((cartRow) => {
+        totalCost += cartRow.querySelector('.input').value * cartRow.querySelector('.input').dataset.price;
+        // totalCost.toLocaleString();
+    });
+
+    // Итоговая сумма для корзины модального окна
+    [...document.querySelectorAll('.cart__row-modal')].forEach((cartRowModal) => {
+        totalCostModal += Number(cartRowModal.querySelector('.inputM').value) * Number(cartRowModal.querySelector('.inputM').dataset.price);
+
+    });
+    document.getElementById('total-price').textContent = totalCost.toLocaleString() + ' грн';
+    document.getElementById('total-price-modal').textContent = totalCostModal.toLocaleString() + ' грн';
+
+};
+
+
+//Плавающый блок итого
+$('document').ready(function() {
+    const mediaQuery = window.matchMedia('(min-width: 960px)');
+
+    function handleTabletChange(e) {
+        if (e.matches) {
+            var documentHeight = $(document).height();
+            var headerHeight = $('#header').innerHeight();
+            var footerHeight = $('#footer').innerHeight();
+            var fixedRightOffset = $('#fixed__right').offset().top;
+            var fixedRightInner = $('#fixed__right-inner');
+            var fixedRightInnerOffset = $('#fixed__right-inner').offset().top;
+            var fixedRightInnerHeight = fixedRightInner.innerHeight();
+            var bottomFixPoint = documentHeight - (fixedRightInnerHeight + footerHeight + headerHeight + 40);
+            const containerFixed = $('#container-fixed');
+            const asideFixedTopClassname = 'aside-fixed--top';
+            const asideFixedBottomClassname = 'aside-fixed--bottom';
+            $(window).scroll(function() {
+                const scrolled = $(this).scrollTop();
+                if (scrolled > (fixedRightInnerOffset - headerHeight)) {
+                    containerFixed.addClass(asideFixedTopClassname);
+
+                } else if (scrolled < fixedRightInnerOffset) {
+                    containerFixed.removeClass(asideFixedTopClassname);
+                }
+                if (scrolled > bottomFixPoint) {
+                    containerFixed.removeClass(asideFixedTopClassname);
+                    containerFixed.addClass(asideFixedBottomClassname);
+                    fixedRightInner.css({
+                        top: bottomFixPoint - fixedRightOffset + headerHeight
+                    });
+                } else if (containerFixed.hasClass(asideFixedBottomClassname) && scrolled < bottomFixPoint) {
+                    containerFixed.removeClass(asideFixedBottomClassname);
+                    containerFixed.addClass(asideFixedTopClassname);
+                    fixedRightInner.css({
+                        top: 'auto'
+                    });
+                }
+            });
+        } else {
+            console.log($(document).height());
+            $('#container-fixed').removeClass('aside-fixed--top');
+            $('#container-fixed').removeClass('aside-fixed--bottom');
+
+            $(window).scroll(function() {
+                // console.log('Проверка работает!');
+                $('#container-fixed').removeClass('aside-fixed--top');
+                $('#container-fixed').removeClass('aside-fixed--bottom');
+            });
+
+        }
+    }
+    mediaQuery.addListener(handleTabletChange)
+    handleTabletChange(mediaQuery)
+});

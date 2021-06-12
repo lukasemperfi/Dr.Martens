@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Martens</title>
+    <link rel="stylesheet" href="css/iconsfont.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/product-card.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icons/favicon/dark/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon/dark/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon/dark/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/icons/favicon/dark/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="img/icons/favicon/dark/android-chrome-512x512.png">
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__border">
+                <div class="loader__core"></div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="header__row">
+                    <div class="header__col">
+                        <div class="header__burger">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="header__form form-mobile">
+                            <div class="form-mobile__search-icon"><img src="img/icons/brand/search.svg" alt=""></div>
+                            <div class="form-mobile__body ">
+                                <div class="mobile-search__btn-cancel"><img src="img/icons/krest.svg" alt=""></div>
+                                <form class="form-mobile mobile-search ">
+                                    <button class="mobile-search__btn-input"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #b6b6b6; width: 35px;">
+                                            <path fill-rule="evenodd" d="M11 5a6 6 0 103.476 10.89l3.01 3.01 1.413-1.415-3.008-3.008A6 6 0 0011 5zm-4 6a4 4 0 118 0 4 4 0 01-8 0z"></path>
+                                        </svg></button>
+                                    <input type="text" placeholder="Поиск" id="TextField" class="mobile-search__input">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="header__switch switch">
+                            <a href="#" class="switch__link">Женщинам</a>
+                            <a href="#" class="switch__link">Мужчинам</a>
+                        </div>
+                    </div>
+                    <div class="header__col">
+                        <div class="header__logo">
+                            <div class="header__image"><a href="main.html"><img src="img/LOGO.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="header__col">
+                        <div class="header__icons icons">
+                            <div class="icons__items header-search b">
+                            </div>
+                            <form class="search__form b">
+                                <div class="search__input">
+                                    <input type="text" placeholder="Поиск" class="header-input-search" id="myTextFieldB">
+                                </div>
+                            </form>
+                            <div class="icons__items header-user">
+                            </div>
+                            <div class="user-sign-in modal">
+                                <div class="user-sign-in__form">
+                                    <span class="user-sign-in__close"></span>
+                                    <form form action="#" id="form" class="user-sign-in__body">
+                                        <h1 class="user-sign-in__title">Вход в аккаунт</h1>
+                                        <div class="user-sign-in__item">
+                                            <label for="user-sign-inName">E-mail</label>
+                                            <input id="user-sign-inName" type="text" name="username" placeholder="Введите свой email" tabindex="1" required>
+                                            <span class="email__icon"><img src="img/icons/form-user-sign%20in/email.svg" alt=""></span>
+                                        </div>
+                                        <div class="user-sign-in__item">
+                                            <label for="password">Пароль</label>
+                                            <input id="password" class="password__sign" type="password" name="password" placeholder="Введите свой пароль" tabindex="2" required>
+                                            <span class="password__icon"><img class="password__img" src="img/icons/form-user-sign%20in/eye.svg" alt=""></span>
+                                        </div>
+                                        <div class="user-sign-in__item">
+                                            <label class="user-sign-in__remember">
+                                                <input type="checkbox" class="user-sign-in__checkbox checkbox__input" tabindex="3">Запомнить меня
+                                                <span class="checkbox__custom"></span>
+                                            </label><a class="user-sign-in__recovery" href="#" tabindex="4">Забыли пароль?</a>
+                                        </div>
+                                        <div class="user-sign-in__item">
+                                            <button class="user-sign-in__button login" type="submit" tabindex="5">Войти</button>
+                                            <button class="user-sign-in__button google" type="button" tabindex="6">
+                                                <span class="google__icon">
+                                                    <img src="img/icons/form-user-sign%20in/google.svg" alt="">
+                                                </span>
+                                                Войти через Google
+                                            </button>
+                                            <button class="user-sign-in__button facebook" type="button" tabindex="7">
+                                                <span class="facebook__icon">
+                                                    <img src="img/icons/form-user-sign%20in/facebook.svg" alt="">
+                                                </span>
+                                                Войти через Facebook
+                                            </button>
+                                            <div class="user-sign-in__create">
+                                                <a class="user-sign-in__reg" href="#" tabindex="8">Создать аккаунт</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="icons__items header-cart">
+                                <span class="header-cart__count "></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="header__menu menu">
+                    <div class="header__switch switch mobile">
+                        <a href="#" class="switch__link">Женщинам</a>
+                        <a href="#" class="switch__link">Мужчинам</a>
+                    </div>
+                    <button class="btnback">Назад</button>
+                    <ul class="menu__list">
+                        <li><a href="#" class="menu__link">Новинки</a></li>
+                        <li class="arrow"><a href="#" class="menu__link ">Originals</a>
+                            <div class="sub-menu">
+                                <ul class="sub-menu__list">
+                                    <li><a href="#" class="sub-menu__link arrow">Ботинки</a>
+                                        <ul class="sub-sub-menu__list">
+                                            <li><a href="#" class="sub-sub-menu__link">1460 lace up</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/1460.png" alt="">
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="sub-sub-menu__link">1490 mid calf</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/1490.png" alt="">
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="sub-sub-menu__link">2976 chelsea</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/2976.png" alt="">
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="sub-sub-menu__link">101 low lace up</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/101.png" alt="">
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="sub-sub-menu__link">1914 tall</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/1914.png" alt="">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" class="sub-menu__link arrow">Туфли</a>
+                                        <ul class="sub-sub-menu__list">
+                                            <li><a href="#" class="sub-sub-menu__link">1461 oxford</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/1461.png" alt="">
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="sub-sub-menu__link">3989 brogue</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/3989.png" alt="">
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="sub-sub-menu__link">8065 mary jane</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/mary-jane.png" alt="">
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="sub-sub-menu__link">ADRIAN TASSEL LOAFERS</a>
+                                                <div class="sub-sub-menu__image">
+                                                    <img src="img/menu/adrian.png" alt="">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" class="sub-menu__link">Женские Originals</a></li>
+                                    <li><a href="#" class="sub-menu__link">Мужские Originals</a></li>
+                                    <li><a href="#" class="sub-menu__link">Made in England</a></li>
+                                    <li><a href="#" class="sub-menu__link">Показать всё</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="arrow"><a href="#" class="menu__link">Рабочая обувь</a>
+                            <div class="sub-menu">
+                                <ul class="sub-menu__list">
+                                    <li><a href="#" class="sub-menu__link">Рабочик ботинки</a></li>
+                                    <li><a href="#" class="sub-menu__link">Рабочие туфли</a></li>
+                                    <li><a href="#" class="sub-menu__link arrow">По стилю</a>
+                                        <ul class="sub-sub-menu__list">
+                                            <li><a href="#" class="sub-sub-menu__link">Light work boots</a></li>
+                                            <li><a href="#" class="sub-sub-menu__link">Heavy duty work boots</a></li>
+                                            <li><a href="#" class="sub-sub-menu__link">service industry</a></li>
+                                            <li><a href="#" class="sub-sub-menu__link">extra-wide boots & shoes</a></li>
+                                            <li><a href="#" class="sub-sub-menu__link">safety & steel toe </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" class="sub-menu__link arrow">По технологии</a>
+                                        <ul class="sub-sub-menu__list">
+                                            <li><a href="#" class="sub-sub-menu__link">Anti-static</a></li>
+                                            <li><a href="#" class="sub-sub-menu__link">electrical hazard</a></li>
+                                            <li><a href="#" class="sub-sub-menu__link">heat resistant</a></li>
+                                            <li><a href="#" class="sub-sub-menu__link">slip-resistant</a></li>
+                                            <li><a href="#" class="sub-sub-menu__link">waterproof</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" class="sub-menu__link">Показать всё</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="arrow"><a href="#" class="menu__link">Аксессуары</a>
+                            <div class="sub-menu">
+                                <ul class="sub-menu__list">
+                                    <li><a href="#" class="sub-menu__link">Рюкзаки и сумки</a></li>
+                                    <li><a href="#" class="sub-menu__link">Шнурки</a></li>
+                                    <li><a href="#" class="sub-menu__link">Носки</a></li>
+                                    <li><a href="#" class="sub-menu__link">Уход за обувью</a></li>
+                                    <li><a href="#" class="sub-menu__link">Показать всё</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#" class="menu__link"><span>Sale%</span></a></li>
+                        <li class="arrow"><a href="#" class="menu__link">Как ухаживать</a>
+                            <div class="sub-menu">
+                                <ul class="sub-menu__list">
+                                    <li><a href="#" class="sub-menu__link">HOW TO CLEAN YOUR DOCS</a></li>
+                                    <li><a href="#" class="sub-menu__link">HOW TO PROTECT</a></li>
+                                    <li><a href="#" class="sub-menu__link">SUEDE CARE GUIDE</a></li>
+                                    <li><a href="#" class="sub-menu__link">PATENT CARE GUIDE</a></li>
+                                    <li><a href="#" class="sub-menu__link">HOW TO LACE</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="content">
+            <div class="container">
+                <div class="product-card">
+                    <div class="product-card__col">
+                        <div class="product-card__slider sliderMin">
+                        </div>
+                    </div>
+                    <div class="product-card__col">
+                        <div class="product-card__slider sliderBig">
+                        </div>
+                    </div>
+                    <div class="product-card__col">
+                        <div class="product-card__info product-info">
+                            <h1 class="product-info__title">1460 SMOOTH LEATHER LACE UP BOOTS</h1>
+                            <div class="product-info__reviews">
+                                <svg viewBox="0 0 65 12" id="icon-product-stars" style="fill: #ffd800; width: 65px;">
+                                    <path d="m5.73433.173217c.10867-.2309559.42269-.2309559.53137 0l1.6246 3.452363c.04311.0917.12659.15527.22303.16998l3.63267.55361c.243.03703.34.35025.1642.53003l-2.62862 2.68729c-.06978.07139-.1017.17425-.08519.275l.62057 3.79451c.04148.2539-.21258.4475-.42991.3276l-3.24916-1.7915c-.08632-.0476-.18944-.0476-.27575 0l-3.24915 1.7915c-.21736.1199-.47141-.0737-.4299-.3276l.62054-3.79451c.01648-.10075-.01538-.20361-.08521-.275l-2.6286226-2.68729c-.1758488-.17978-.0788129-.493.1642076-.53003l3.632665-.55361c.0965-.01471.17992-.07828.22308-.16998z"></path>
+                                    <path d="m18.7343.173217c.1087-.2309559.4227-.2309559.5314 0l1.6246 3.452363c.0431.0917.1266.15527.223.16998l3.6327.55361c.243.03703.34.35025.1642.53003l-2.6286 2.68729c-.0698.07139-.1017.17425-.0852.275l.6206 3.79451c.0414.2539-.2126.4475-.4299.3276l-3.2492-1.7915c-.0863-.0476-.1894-.0476-.2758 0l-3.2491 1.7915c-.2174.1199-.4714-.0737-.4299-.3276l.6205-3.79451c.0165-.10075-.0154-.20361-.0852-.275l-2.6286-2.68729c-.1759-.17978-.0788-.493.1642-.53003l3.6327-.55361c.0965-.01471.1799-.07828.223-.16998z"></path>
+                                    <path d="m31.7343.173217c.1087-.2309559.4227-.2309559.5314 0l1.6246 3.452363c.0431.0917.1266.15527.223.16998l3.6327.55361c.243.03703.34.35025.1642.53003l-2.6286 2.68729c-.0698.07139-.1017.17425-.0852.275l.6206 3.79451c.0414.2539-.2126.4475-.4299.3276l-3.2492-1.7915c-.0863-.0476-.1894-.0476-.2758 0l-3.2491 1.7915c-.2174.1199-.4714-.0737-.4299-.3276l.6205-3.79451c.0165-.10075-.0154-.20361-.0852-.275l-2.6286-2.68729c-.1759-.17978-.0788-.493.1642-.53003l3.6327-.55361c.0965-.01471.1799-.07828.223-.16998z"></path>
+                                    <path d="m44.7343.173217c.1087-.2309559.4227-.2309559.5314 0l1.6246 3.452363c.0431.0917.1266.15527.223.16998l3.6327.55361c.243.03703.34.35025.1642.53003l-2.6286 2.68729c-.0698.07139-.1017.17425-.0852.275l.6206 3.79451c.0414.2539-.2126.4475-.4299.3276l-3.2492-1.7915c-.0863-.0476-.1894-.0476-.2758 0l-3.2491 1.7915c-.2174.1199-.4714-.0737-.4299-.3276l.6205-3.79451c.0165-.10075-.0154-.20361-.0852-.275l-2.6286-2.68729c-.1759-.17978-.0788-.493.1642-.53003l3.6327-.55361c.0965-.01471.1799-.07828.223-.16998z"></path>
+                                    <path d="m57.7343.173217c.1087-.2309559.4227-.2309559.5314 0l1.6246 3.452363c.0431.0917.1266.15527.223.16998l3.6327.55361c.243.03703.34.35025.1642.53003l-2.6286 2.68729c-.0698.07139-.1017.17425-.0852.275l.6206 3.79451c.0414.2539-.2126.4475-.4299.3276l-3.2492-1.7915c-.0863-.0476-.1894-.0476-.2758 0l-3.2491 1.7915c-.2174.1199-.4714-.0737-.4299-.3276l.6205-3.79451c.0165-.10075-.0154-.20361-.0852-.275l-2.6286-2.68729c-.1759-.17978-.0788-.493.1642-.53003l3.6327-.55361c.0965-.01471.1799-.07828.223-.16998z" style="fill: rgba(0, 0, 0, 0.18);"></path>
+                                </svg>
+                                <a href="#">268 отзывов</a>
+                            </div>
+                            <div class="product-info__color"></div>
+                            <div class="product-info__image">
+                            </div>
+                            <div class="product-info__current-price">2500 грн</div>
+                            <div class="product-info__size size">
+                                <div class="size__item">Выберите размер:</div>
+                                <ul class="size__choice">
+                                    <li class="size__option">38</li>
+                                    <li class="size__option">39</li>
+                                    <li class="size__option">40</li>
+                                    <li class="size__option">41</li>
+                                    <li class="size__option">42</li>
+                                    <li class="size__option">43</li>
+                                    <li class="size__option">44</li>
+                                    <li class="size__option">45</li>
+                                    <li class="size__option">46</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="product-info__button add-cart">Добавить в корзину</button>
+                            <button type="button" class="product-info__button add-shop">Забрать из магазина</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-info">
+                <div class="container">
+                    <div class="cards-info__tabs tabs">
+                        <div class="tabs__nav">
+                            <button class="tabs__nav-btn" type="button" data-tab="#tab_1">Описание товара</button>
+                            <button class="tabs__nav-btn" type="button" data-tab="#tab_2">Оплата и доставка</button>
+                            <button class="tabs__nav-btn" type="button" data-tab="#tab_3">Возврат</button>
+                        </div>
+                        <div class="tabs__content">
+                            <div class="tabs__item" id="tab_1">
+                                <p>Полусапоги из коллекции Dr. Martens. Модель выполнена из натуральной кожи.</p>
+                                <ul>
+                                    <li>Уплотненный носок.</li>
+                                    <li>Резиновая подошва.</li>
+                                    <li>Уплотненный задник.</li>
+                                    <li>Кожаная стелька.</li>
+                                    <li>Модель со шнуровкой.</li>
+                                    <li>Длина стельки составляет: 27 см.</li>
+                                    <li>Параметры указаны для размера: 42.</li>
+                                </ul>
+                            </div>
+                            <div class="tabs__item" id="tab_2">
+                                <div>
+                                    <span>Заберу из магазина</span><span>БЕСПЛАТНО</span>
+                                </div>
+                                <ul>
+                                    <li>Срок доставки: 24 часа для заказов по Киеву, при оформлении заказа до 11:00</li>
+                                    <li>Срок доставки: 1 день, если товар есть в наличии в магазине доставки</li>
+                                    <li>Возможность комфортной примерки</li>
+                                    <li>Оплата банковской картой или наличными</li>
+                                </ul>
+                                <div>
+                                    <span>Нова Пошта (самовывоз)</span><span>69 ГРН</span>
+                                </div>
+                                <ul>
+                                    <li>Срок доставки: 3-4 дня</li>
+                                    <li>Оплата банковской картой или наличными</li>
+                                </ul>
+                                <div>
+                                    <span>Курьером Нова Пошта</span><span>99 ГРН</span>
+                                </div>
+                                <ul>
+                                    <li>Срок доставки: 3-4 дня</li>
+                                    <li>Оплата банковской картой или наличными</li>
+                                    <li>Примерка товара – на усмотрение службы доставки</li>
+                                </ul>
+                                <div>
+                                    <span>Justin (самовывоз)</span><span>39 ГРН </span>
+                                </div>
+                                <ul>
+                                    <li>Срок доставки: 3-4 дня</li>
+                                    <li>Оплата банковской картой или наличными</li>
+                                </ul>
+                                <div>
+                                    <span>Укрпошта (самовывоз)</span><span>БЕСПЛАТНО</span>
+                                </div>
+                                <ul>
+                                    <li>Срок доставки: 3-6 дня</li>
+                                    <li>Оплата банковской картой или наличными</li>
+                                </ul>
+                            </div>
+                            <div class="tabs__item" id="tab_3">
+                                <div>
+                                    Чтобы вернуть товар, нужно сделать 3 простых шага:
+                                </div>
+                                <ul>
+                                    <li>Заполнить и подписать «Заявление на возврат товара» (этот документ содержится в заказе).</li>
+                                    <li>Упаковать ТОВАР в оригинальную упаковку в полной комплектации (товары, поставляемые в комплекте, также необходимо возвращать), вложить внутрь, вместе с товаром, Заявление на возврат и Накладная (этот документ также содержится в заказе).</li>
+                                    <li>Отправить товар курьерской службой: "Новая Почта" или "Justin".</li>
+                                </ul>
+                                <div>
+                                    Если Вы самостоятельно забирали товар из магазина, то для возврата нужно обратиться в любой магазин сети.
+                                </div>
+                                <div>
+                                    С собой нужно иметь:
+                                </div>
+                                <ul>
+                                    <li>товарный чек</li>
+                                    <li>паспорт / водительское удостоверение</li>
+                                    <li>купленный товар (без следов эксплутации и повреждений) в заводской упаковке и со всеми бирками</li>
+                                </ul>
+                                <div>ВОЗВРАТ СРЕДСТВ ОСУЩЕСТВЛЯЕТСЯ В ТЕЧЕНИЕ 30 ДНЕЙ С ДАТЫ ПОДАЧИ ЗАЯВКИ.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="cart__inner">
+                    <span class="cart__close"></span>
+                    <div class="cart__title">Корзина</div>
+                    <div class="cart__body-modal">
+                    </div>
+                    <div class="cart__checkout checkout">
+                        <div class="checkout__total-price">
+                            <span>Итого:</span>
+                            <span id="total-price-modal"></span>
+                        </div>
+                        <a href="order.html" class="checkout__btn ">Оформить заказ</a>
+                    </div>
+                </div>
+            </div>
+            <button class="up-button"></button>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__info info one">
+                    <div class="info__col">
+                        <div class="info__body">
+                            <div class="info__title">Каталог</div>
+                            <div class="info__content">
+                                <ul>
+                                    <li><a href="#">Мужская обувь</a></li>
+                                    <li><a href="#">Женская обувь</a></li>
+                                    <li><a href="#">Originals</a></li>
+                                    <li><a href="#">Рабочая обувь</a></li>
+                                    <li><a href="#">Аксессуары</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info__col">
+                        <div class="info__body">
+                            <div class="info__title">ПОКУПАТЕЛЮ</div>
+                            <div class="info__content">
+                                <ul>
+                                    <li><a href="#">Доставка и оплата</a></li>
+                                    <li><a href="#">Бонусная программа</a></li>
+                                    <li><a href="#">Вопросы и ответы</a></li>
+                                    <li><a href="#">Гарантии</a></li>
+                                    <li><a href="#">Возврат</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info__col">
+                        <div class="info__body">
+                            <div class="info__title">О нас</div>
+                            <div class="info__content">
+                                <ul>
+                                    <li><a href="#">Магазины</a></li>
+                                    <li><a href="#">Карьера</a></li>
+                                    <li><a href="#">Новости</a></li>
+                                    <li><a href="#">Контакты</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info__col">
+                        <div class="info__body">
+                            <div class="info__title">Способы оплаты</div>
+                            <div class="info__content">
+                                <div class="info__image"><img src="img/icons/footer/mastercard.svg" alt=""></div>
+                                <div class="info__image"><img src="img/icons/footer/visa.svg" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright copyright">
+                    <div class="copyright__item">© 2021 Все права защищены</div>
+                    <div class="copyright__item">DR. MARTENS UK LIMITED</div>
+                    <div class="copyright__item">
+                        <div class="copyright__social">
+                            <a href="#"><img src="img/icons/footer/social/facebook.svg" alt=""></a>
+                            <a href="#"><img src="img/icons/footer/social/twitter.svg" alt=""></a>
+                            <a href="#"><img src="img/icons/footer/social/instagram.svg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/slick.js"></script>
+    <script src="js/general.js"></script>
+    <script src="js/product-card.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+@charset "UTF-8";
+.product-card {
+  display: flex;
+  padding: 20px 0px 50px 0px;
+}
+@media (max-width: 961px) {
+  .product-card {
+    flex-direction: column;
+  }
+}
+.product-card__col:nth-child(1) {
+  min-width: 0;
+  flex: 0 1 8%;
+  padding: 0px 10px;
+}
+@media (max-width: 961px) {
+  .product-card__col:nth-child(1) {
+    display: none;
+  }
+}
+.product-card__col:nth-child(2) {
+  flex: 0 1 59%;
+  min-width: 0;
+  margin: 0px 0px 30px 0px;
+}
+@media (max-width: 690px) {
+  .product-card__col:nth-child(2) {
+    flex: 0 1 100%;
+    margin: 0px -20px 30px -20px;
+  }
+}
+@media (max-width: 500px) {
+  .product-card__col:nth-child(2) {
+    margin: 0px -10px 30px -10px;
+  }
+}
+.product-card__col:nth-child(3) {
+  flex: 0 1 33%;
+}
+.sliderBig {
+  position: relative;
+  padding: 0px 50px;
+}
+@media (max-width: 690px) {
+  .sliderBig {
+    padding: 0px;
+  }
+}
+.sliderBig__item img {
+  max-width: 100%;
+}
+.sliderBig .slick-list {
+  overflow: hidden;
+}
+.sliderBig .slick-track {
+  display: flex;
+}
+.sliderBig .slick-arrow {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  font-size: 0;
+  width: 50px;
+  height: 100%;
+}
+.sliderBig .slick-arrow.slick-prev {
+  left: 0;
+  background: url("../img/icons/slider/left-arrow.svg") 50%/30px no-repeat;
+}
+.sliderBig .slick-arrow.slick-next {
+  right: 0;
+  background: url("../img/icons/slider/right-arrow.svg") 50%/30px no-repeat;
+}
+.sliderBig .slick-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.sliderBig .slick-dots li {
+  margin: 0px 15px;
+}
+.sliderBig .slick-dots li.slick-active button {
+  background-color: #ffffff;
+}
+.sliderBig .slick-dots li button {
+  font-size: 0;
+  height: 10px;
+  width: 10px;
+  background-color: #919194;
+  border-radius: 50%;
+}
+
+.sliderMin {
+  position: relative;
+  padding: 50px 0px;
+}
+.sliderMin.slick-vertical .sliderMin__item {
+  cursor: pointer;
+}
+.sliderMin__item {
+  margin-bottom: 20px;
+}
+.sliderMin__item img {
+  max-width: 100%;
+}
+.sliderMin .slick-list {
+  overflow: hidden;
+}
+.sliderMin .slick-track {
+  display: block;
+}
+.sliderMin .slick-arrow {
+  position: absolute;
+  z-index: 10;
+  font-size: 0;
+  width: 100%;
+  height: 50px;
+}
+.sliderMin .slick-arrow.slick-prev {
+  top: 0;
+  background: url("../img/icons/slider/up-arrow.svg") 50%/30px no-repeat;
+}
+.sliderMin .slick-arrow.slick-next {
+  bottom: 20px;
+  background: #ffffff url("../img/icons/slider/down-arrow.svg") 50%/30px no-repeat;
+}
+.product-info {
+  font-size: 15px;
+  font-weight: 500;
+}
+.product-info__title {
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 18px;
+}
+.product-info__current-price {
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 18px;
+  margin: 0px 0px 30px 0px;
+  white-space: nowrap;
+}
+.product-info__reviews {
+  margin: 10px 0px 30px 0px;
+}
+.product-info__reviews a {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #4285F4;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .product-info__reviews a:hover {
+    text-decoration: underline;
+    color: #f93c00;
+  }
+}
+.product-info__color {
+  font-weight: 400;
+  margin: 0px 0px 15px 0px;
+}
+.product-info__color span {
+  font-weight: 500;
+}
+.product-info__image {
+  height: 76px;
+  width: 60px;
+  margin: 0px 0px 20px 0px;
+  cursor: pointer;
+}
+.product-info__image img {
+  max-width: 100%;
+}
+.product-info__button {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  text-transform: uppercase;
+  color: #000000;
+  width: 100%;
+  min-height: 50px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.product-info__button.add-cart {
+  background-color: #ffd800;
+  margin: 0px 0px 10px 0px;
+}
+.product-info__button.add-shop {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  transition: all 0.3s;
+}
+.product-info__button.add-shop:hover {
+  background-color: #3a3b42;
+  color: #ffffff;
+}
+
+.size {
+  margin: 0px 0px 15px 0px;
+}
+.size__item {
+  margin: 0px 0px 15px 0px;
+}
+.size__choice {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+}
+.size__choice .size__option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48.4px;
+  width: 48.4px;
+  background-color: #F2F2F2;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.size__choice .size__option:hover {
+  border: 1px solid #82828b;
+}
+.size__choice .size__option.active {
+  border: 1px solid #82828b;
+}
+
+.cards-info {
+  background-color: #f7f7f7;
+}
+.tabs {
+  padding: 50px 0px;
+}
+.tabs__nav {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+@media (max-width: 961px) {
+  .tabs__nav {
+    justify-content: space-around;
+  }
+}
+.tabs__nav-btn {
+  margin-right: 50px;
+  padding: 10px 0px;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #919194;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: all 0.4s;
+}
+@media (max-width: 961px) {
+  .tabs__nav-btn {
+    margin-right: 0;
+    padding: 10px;
+  }
+}
+.tabs__nav-btn.active {
+  color: #000000;
+}
+.tabs__nav-btn:first-child:before {
+  display: none;
+}
+.tabs__nav-btn:after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 1.5px;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  background: #000000;
+  transition: all 0.4s;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+.tabs__nav-btn.active:after {
+  width: 100%;
+}
+.tabs__content {
+  font-size: 14px;
+  line-height: 22px;
+}
+.tabs__item {
+  display: none;
+}
+.tabs__item.active {
+  display: block;
+}
+.tabs__item p {
+  margin: 0px 0px 30px 0px;
+}
+.tabs__item div {
+  width: 70%;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 30px 0px;
+}
+@media (max-width: 961px) {
+  .tabs__item div {
+    width: 100%;
+  }
+}
+.tabs__item ul {
+  width: 70%;
+  padding: 0px 0px 0px 30px;
+}
+@media (max-width: 961px) {
+  .tabs__item ul {
+    width: 100%;
+  }
+}
+.tabs__item ul li {
+  list-style: disc;
+  margin-bottom: 10px;
+}
+.tabs__item:nth-child(2) div {
+  display: flex;
+  justify-content: space-between;
+}
